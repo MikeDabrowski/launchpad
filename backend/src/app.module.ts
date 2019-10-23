@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { SoundModule } from './sound/sound.module';
+import { PlayModule } from './play/play.module';
 
 @Module({
-  imports: [SoundModule],
+  imports: [PlayModule],
 })
 export class AppModule {
 }
