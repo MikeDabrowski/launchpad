@@ -2,7 +2,7 @@ import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import * as ioHook from 'iohook';
 import * as play_sound from 'play-sound';
 import { fromEvent } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
+import { debounceTime, filter, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class PlayService implements OnModuleDestroy, OnModuleInit {
@@ -16,6 +16,7 @@ export class PlayService implements OnModuleDestroy, OnModuleInit {
         .pipe(
             map(({ keycode }: any) => keycode),
             filter((keycode) => keycode >= 0 && keycode <= 10),
+            debounceTime(300),
             tap(id => this.play(id)),
         )
         .subscribe();
@@ -37,7 +38,7 @@ export class PlayService implements OnModuleDestroy, OnModuleInit {
   }
 
   private play(id: number) {
-    this.player.play(`${this.soundFilesPath}0${id}*`, err => {
+    this.player.play(`${this.soundFilesPath}0${id - 1}*`, err => {
       if (err) { console.error(err); }
     });
     return this.soundFilesPath + id + '*' + ' played';
