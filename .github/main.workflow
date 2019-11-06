@@ -5,5 +5,5 @@ workflow "auto-label" {
 
 action "Auto label" {
   uses = "banyan/auto-label@master"
-  secrets = ["672545bc38807b714f7f404ab33526024600244a"]
+  secrets = ["LABEL_TOKEN"]
 }
