@@ -5,5 +5,5 @@ workflow "auto-label" {
 
 action "Auto label" {
   uses = "banyan/auto-label@master"
-  secrets = ["LABEL_TOKEN"]
+  secrets = ["GITHUB_TOKEN"]
 }
