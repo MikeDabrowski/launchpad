@@ -37,7 +37,7 @@ export class PlayService implements OnModuleDestroy, OnModuleInit {
   }
 
   private play(id: number) {
-    this.player.play(this.soundFilesPath + id + '*', err => {
+    this.player.play(`${this.soundFilesPath}0${id}*`, err => {
       if (err) { console.error(err); }
     });
     return this.soundFilesPath + id + '*' + ' played';
