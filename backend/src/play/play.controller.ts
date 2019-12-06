@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { PlayService } from 'src/play/play.service';
+import { PlayService } from './play.service';
 
 @Controller('play')
 export class PlayController {
